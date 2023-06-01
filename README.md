@@ -1,4 +1,4 @@
-INTRODUCTION
+        INTRODUCTION
 We made this snake game by using tkinter which is basically GUI ,here we see that the front page of the  our Snake game which is developed by me i.e Amit Kumar so,let’s see the what are the functionalities of different button , level , difficulty ,mode and last we see the rules for the user who has playing this game. the further next part of this game that is how is it actually work is explained by my teammates Aman kumar and Abhishek kumar in our next slides.
 
 1.BUTTONS:-In this front page there are many buttons which is used i.e easy,medium and hard these buttons is for the users who choose the difficulty level as he wish and the button i.e high score by this button user can see its previous high score and also the option of reset high score by this button user can reset its previous high score.our next button is start game by this button user can start the game .
@@ -32,6 +32,35 @@ Whenever the snake takes its next move we check the collision condition as; Does
 In this function the simple logic is that the snake can’t move exactly backwards. For example, a right moving snake can’t move left in its just next turn.Otherwise other key enter by the user is valid and for that valid key the snake new direction is set to the user entered key from the previous direction.
 
 
+
+                    SNAKE MOVEMENT 
+The snake movement logic is written in the function Next_Turn() . This function recursively calls itself using the After() method  from the Tkinter module which takes time as argument and adds the function to the mainloop queue and calls it after a certain delay. The smaller the time pass the faster the function call happens and faster the movement of the snake happens , hence controlling the speed of the snake.
+
+For movement one square piece is added in the canvas in front of the snake’s BodyParts list and its coordinate is calculated using the command received and the coordinate of the snake’s head(first element of the bodyParts and snake coordinate list). If the new square inserted does not have the same coordinate as Food then the last part of the snake is removed from canvas using canvas.delete()  and its canvas and coordinate is also removed from the bodyParts and coordinate list, which create the imitation of the snake moving. If the food coordinate does  match up with the snake’s head then nothing will change as its size will increase by 1.
+
+If the new head inserted has coordinates then checkCollision() gets calls to check collision. If the collision occurs the game terminates by calling game_over() function.
+
+At the end it gets added to the queue using after() method for again calling
+
+                        HIGH SCORE STORING
+
+We have used file handling to store high scores made by Players.
+Scores of different modes(multi ,single,easy-medium-hard) are stored in different .txt files on user’s system which are dynamically created on runtime if there is no record for a particular mode.
+
+Every time a player surpasses a high score the record files get updated with new score and a message of Congratulations appear on Game Over Screen.
+
+Players can view and reset their high scores for every mode using the buttons provided on the home page
+
+
+                            MULTI PLAYERS MODE
+
+Players can choose to opt for multiplayer mode where 2 players (Red and Green) can simultaneously play in one frame and compete for high score.
+One Player plays with keyboard arrows and other with ‘W’.’A’,’S’,’D, arrows. If a player get’s out then, other can continuously play. The one with the highest score at the end wins.
+
+Implementation: for multiplayer mode different Next_Move() is created along with multi_snake and multi_food class.
+
+
 For installing clone this repo using 
 git clone https://github.com/abhishek-3078/snake-game.git 
-and enjoy.
+and install required libraries using pip install package_name
+and enjoy the game
